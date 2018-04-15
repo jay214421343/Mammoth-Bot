@@ -6,7 +6,7 @@ module.exports = {
 // This is the name of the action displayed in the editor.
 //---------------------------------------------------------------------
 
-name: "Youtube Time Converter",
+name: "YouTube Time Converter",
 
 //---------------------------------------------------------------------
 // Action Section
@@ -34,19 +34,19 @@ return `Convert into ${data.varName}`;
 	 // about the mods for people to see in the list.
 	 //---------------------------------------------------------------------
 
-	 // Who made the mod (If not set, defaults to "DBM Mods")
-	 author: "General Wrex", //Idea by Tresmos
+ // Who made the mod (If not set, defaults to "DBM Mods")
+ author: "General Wrex", //Idea by Tresmos
 
-	 // The version of the mod (Defaults to 1.0.0)
-	 version: "1.8.6", //Added in 1.8.6
+ // The version of the mod (Defaults to 1.0.0)
+ version: "1.8.6", //Added in 1.8.6
 
-	 // A short description to show on the mod line for this mod (Must be on a single line)
-	 short_description: "Converts YouTube Time Code into numeric time.",
+ // A short description to show on the mod line for this mod (Must be on a single line)
+ short_description: "Converts YouTube Time Code into numeric time.",
 
-	 // If it depends on any other mods by name, ex: WrexMODS if the mod uses something from WrexMods
+ // If it depends on any other mods by name, ex: WrexMODS if the mod uses something from WrexMods
 
 
-	 //---------------------------------------------------------------------
+ //---------------------------------------------------------------------
 
 //---------------------------------------------------------------------
 // Action Storage Function
@@ -92,12 +92,12 @@ html: function(isEvent, data) {
 <div>
 		<p>
 			<u>Mod Info:</u><br>
-			Created by General Wrex!
+			Created by General Wrex! Edited by mjmalec
 		</p>
 </div><br>
 <div>
 <br>
-    Youtube Time:<br>
+    YouTube Time:<br>
 	<textarea id="ytTime" class="round" style="width: 35%; resize: none;" type="textarea" rows="1" cols="20"></textarea><br>
 	<div style="float: left; width: 35%;">
 		Store In:<br>
@@ -138,7 +138,7 @@ action: function (cache) {
 
 	const ytTime = this.evalMessage(data.ytTime, cache);
 
-	// Taken from https://www.npmjs.com/package/youtube-duration-format
+	// Taken from https://www.npmjs.com/package/YouTube-duration-format
 	function parseDuration(PT, format) {
 		var output = [];
 		var durationInSec = 0;
@@ -185,13 +185,9 @@ action: function (cache) {
 		  output.push(parseInt(durationInSec / 3600));
 		  durationInSec %= 3600;
 		}
-		// Minutes extraction with leading zero
-		output.push(('0' + parseInt(durationInSec / 60)).slice(-2));
-		// Seconds extraction with leading zero
-		output.push(('0' + durationInSec % 60).slice(-2));
+		// Total extraction in seconds
+		output.push(('0' + parseInt(durationInSec / 60)).slice(-2)* 60 + (('0' + parseInt(durationInSec % 60)).slice(-2)));
 		if (format === undefined)
-		  return output.join(':');
-		else if (format === 'sec')
 		  return totalSec;
 	};
 
