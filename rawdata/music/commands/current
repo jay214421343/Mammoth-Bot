@@ -31,7 +31,7 @@
       "token": "",
       "user": "",
       "pass": "",
-      "url": "https://www.googleapis.com/youtube/v3/search?part=snippet&q=${tempVars(\"sid-y-1\")}&type=video&key=AIzaSyCmCvCjtdDo0FiEmGcoMMRzjOk6hfs66p8",
+      "url": "https://www.googleapis.com/youtube/v3/search?part=snippet&q=${tempVars(\"sid-y-1\")}&type=video&key=YOUR_TOKEN",
       "path": "items[0].snippet.thumbnails.high.url",
       "storage": "1",
       "varName": "stn-y-1",
