@@ -1,4 +1,5 @@
 You Need to place convert_YT_Time_MJ.js inside of your actions folder in (steam) and your (bot).
+!!!IMPORTANT!!! RESTART BOT AFTER YOU MOVED FILE
 
 Place the all the commands in your bot and then the events.
 
