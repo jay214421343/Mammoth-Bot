@@ -1,0 +1,22 @@
+{
+  "name": "Support",
+  "permissions": "NONE",
+  "restriction": "1",
+  "actions": [
+    {
+      "channel": "0,
+      "varName": "",
+      "message": "in testing",
+     "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    }
+  ],
+  "_id": "UvccQ",
+  "comType": "0"
+}
