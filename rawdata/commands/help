@@ -70,7 +70,7 @@
     {
       "channel": "1",
       "varName": "",
-      "message": "```css/nbotinfo                 shows bot info                /nping                 shows ping```",
+      "message": "```css/nbotstats               shows bot info                /nping                 shows ping```",
       "storage": "0",
       "varName2": "",
       "name": "Send Message"
