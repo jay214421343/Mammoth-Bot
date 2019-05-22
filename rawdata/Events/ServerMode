@@ -22,7 +22,7 @@
     },
     {
       "activity": "2",
-      "nameText": "Help: !help - ${tempVars(\"guilds\")} servers and ${tempVars(\"users\")} users!",
+      "nameText": "Help: c!help - ${tempVars(\"guilds\")} servers and ${tempVars(\"users\")} users!",
       "url": "",
       "name": "Set Bot Activity"
     }
