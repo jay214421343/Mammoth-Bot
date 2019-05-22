@@ -1,5 +1,5 @@
 {
-  "name": "Warning",
+  "name": "Warn",
   "permissions": "MANAGE_ROLES",
   "restriction": "1",
   "actions": [
