@@ -6,7 +6,7 @@
   "actions": [
     {
       "video": "${tempVars(\"url\")}",
-      "key": "Google API token",
+      "key": "AIzaSyD8CNiCM65vZ7n3EprQFUwOrqRtWzLnqDE",
       "info": "1",
       "resultNo": "0",
       "storage": "1",
