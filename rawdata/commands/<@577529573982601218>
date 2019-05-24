@@ -1,0 +1,16 @@
+{
+  "name": "<@577529573982601218>",
+  "permissions": "NONE",
+  "restriction": "1",
+  "actions": [
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "Testing this
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ],
+  "_id": "uvVLN"
+}
