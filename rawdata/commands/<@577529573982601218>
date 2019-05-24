@@ -4,7 +4,7 @@
   "restriction": "1",
   "actions": [
     {
-      "channel": "0",
+      "channel": "1",
       "varName": "",
       "message": "Testing this
       "storage": "0",
