@@ -39,7 +39,7 @@ subtitle: function(data) {
 	 author: "Lasse",
 
 	 // The version of the mod (Defaults to 1.0.0)
-	 version: "1.8.5",
+	 version: "1.8.7", //Added in 1.8.5
 
 	 // A short description to show on the mod line for this mod (Must be on a single line)
 	 short_description: "Finds a message by content or ID.",
@@ -48,8 +48,8 @@ subtitle: function(data) {
 
 
 	 //---------------------------------------------------------------------
-	 
-	 
+
+
 //---------------------------------------------------------------------
 // Action Storage Function
 //
@@ -78,15 +78,15 @@ fields: ["channel", "varName", "info", "search", "storage", "varName2"],
 // Command HTML
 //
 // This function returns a string containing the HTML used for
-// editting actions. 
+// editting actions.
 //
 // The "isEvent" parameter will be true if this action is being used
-// for an event. Due to their nature, events lack certain information, 
+// for an event. Due to their nature, events lack certain information,
 // so edit the HTML to reflect this.
 //
-// The "data" parameter stores constants for select elements to use. 
+// The "data" parameter stores constants for select elements to use.
 // Each is an array: index 0 for commands, index 1 for events.
-// The names are: sendTargets, members, roles, channels, 
+// The names are: sendTargets, members, roles, channels,
 //                messages, servers, variables
 //---------------------------------------------------------------------
 
@@ -97,6 +97,7 @@ html: function(isEvent, data) {
 	<p>
 		<u>Mod Info:</u><br>
 		Created by Lasse!
+		Modified by General Wrex!
 	</p>
 </div><br>
 <div>
@@ -139,10 +140,9 @@ html: function(isEvent, data) {
 <div>
 	<p>
 	<u>Note:</u><br>
-	This mod can only find messages which have been sent <b>after</b> the bot started.<br>
-	If there are multiple messages with the same content, the bot is always using the oldest message (after start).<br>
-	We are trying to add global search instead of channel-only search.
-</div>`
+	This mod can only find messages by <b>content</b> within the last 100 messages.<br>
+	If there are multiple messages with the same content, the bot is always using the oldest message (after start).
+</div>`;
 },
 
 //---------------------------------------------------------------------
@@ -163,7 +163,7 @@ init: function() {
 // Action Bot Function
 //
 // This is the function for the action within the Bot's Action class.
-// Keep in mind event calls won't have access to the "msg" parameter, 
+// Keep in mind event calls won't have access to the "msg" parameter,
 // so be sure to provide checks for variable existance.
 //---------------------------------------------------------------------
 
@@ -178,23 +178,38 @@ action: function(cache) {
 		this.callNextAction(cache);
 		return;
 	}
+
+	const storage = parseInt(data.storage);
+	const varName2 = this.evalMessage(data.varName2, cache);
+
 	let result;
 	switch(info) {
 		case 0:
-			result = targetChannel.messages.find("content", search);
+			targetChannel.fetchMessages({ limit: 100 }).then(messages =>{
+				const message = messages.find(el => el.content.includes(search));			
+				if(message !== undefined){
+					this.storeValue(message, storage, varName2, cache);						
+				}
+				this.callNextAction(cache);
+			}).catch(err=>{
+				console.error(err); 
+				this.callNextAction(cache);
+			});	
 			break;
 		case 1:
-			result = targetChannel.messages.find("id", search);
+			targetChannel.fetchMessage(search).then(message =>{			
+				if(message !== undefined){
+					this.storeValue(message, storage, varName2, cache);
+				}						
+				this.callNextAction(cache);
+			}).catch(err=>{
+				console.error(err); 
+				this.callNextAction(cache);
+			});	
 			break;
 		default:
 			break;
 	}
-	if(result !== undefined) {
-		const storage = parseInt(data.storage);
-		const varName2 = this.evalMessage(data.varName2, cache);
-		this.storeValue(result, storage, varName2, cache);
-	}
-	this.callNextAction(cache);
 },
 
 //---------------------------------------------------------------------

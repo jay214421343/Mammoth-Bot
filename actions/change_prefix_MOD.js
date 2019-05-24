@@ -6,7 +6,7 @@ module.exports = {
 // This is the name of the action displayed in the editor.
 //---------------------------------------------------------------------
 
-name: "Change Prefix",
+name: "Change Global Prefix",
 
 //---------------------------------------------------------------------
 // Action Section
@@ -37,7 +37,7 @@ subtitle: function(data) {
 	 author: "EliteArtz & General Wrex",
 
 	 // The version of the mod (Defaults to 1.0.0)
-	 version: "1.8.4",
+	 version: "1.9.1", // original 1.8.4 | re-added in 1.9.1 ~ Danno3817
 
 	 // A short description to show on the mod line for this mod (Must be on a single line)
 	 short_description: "Change Prefix from Bot",
